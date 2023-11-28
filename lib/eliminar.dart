@@ -29,7 +29,7 @@ class _EliminarState extends State<Eliminar> {
 
       setState(() {
         data = decodedData['proveedores'] ?? [];
-        filteredData = data; // Inicializa filteredData con todos los datos
+        filteredData = data; 
       });
     } else {
       throw Exception('Failed to load data');
@@ -51,7 +51,7 @@ class _EliminarState extends State<Eliminar> {
     final response = await http.delete(apiUrl);
 
     if (response.statusCode == 200) {
-      // Actualiza la lista después de eliminar el proveedor
+   
       getUsuarios();
     } else {
       throw Exception('Failed to delete provider');
