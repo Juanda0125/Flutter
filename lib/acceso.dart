@@ -75,10 +75,41 @@ class Acceso extends StatelessWidget {
                         }
 
                         if (validar(usuario.text, contra.text)) {
+
+
+                          showDialog(context: context,  builder: (context){
+                          return AlertDialog(
+                              title: const Text('Alerta'),
+                              content: const Text('Registro exitoso'),
+                              actions: [
+                                TextButton(onPressed: 
+                                (){
+                                  Navigator.pop(context);
+                                 
+                                }, child: const Text('Aceptar'))
+                              ],
+                          );
+                          }
+                          );
+
                           Navigator.pushReplacement(context,
                               MaterialPageRoute(builder: (context) =>  Inicio()));
                         } else {                         
-                          const Text('Usuario y/o constraseña incorrecta');
+
+                          showDialog(context: context,  builder: (context){
+                          return AlertDialog(
+                              title: const Text('Alerta'),
+                              content: const Text('Usuario y/o constraseña incorrecta'),
+                              actions: [
+                                TextButton(onPressed: 
+                                (){
+                                  Navigator.pop(context);
+                                 
+                                }, child: const Text('Aceptar'))
+                              ],
+                          );
+                          }
+                          );
                         }
                       },
                       child: const Text('Ingresar'))

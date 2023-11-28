@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:http/http.dart' as http;
+import 'package:login/Inicio.dart';
 
 class Registrar extends StatefulWidget {
   const Registrar({super.key});
@@ -131,9 +132,27 @@ Future<void> sendData(int? ID, String nombre, String direccion, String telefono)
               print('No valido');
               return;
             }
-            else{
+            else{                          
               sendData(int.parse(ID.text), nombre.text, direccion.text, telefono.text);
-            }
+
+              showDialog(context: context,  builder: (context){
+                return AlertDialog(
+                              title: const Text('Alerta'),
+                              content: const Text('Registro exitoso'),
+                              actions: [
+                                TextButton(onPressed: 
+                                (){
+                                  Navigator.pop(context);
+                                  Navigator.pushReplacement(context,
+                                  MaterialPageRoute(builder: (context) =>  Inicio()));
+                                }, child: const Text('Aceptar'))
+                              ],
+                );
+                }
+                );
+
+                
+              }
           },
           child: const Text('Guardar'),
         )
@@ -143,4 +162,5 @@ Future<void> sendData(int? ID, String nombre, String direccion, String telefono)
       )
     );
   }
+
 }
